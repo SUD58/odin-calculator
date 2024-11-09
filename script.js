@@ -5,12 +5,14 @@ let currentNum = "";
 let result = "";
 let isNum2 = false;
 let isZeroDivisor = false;
+let isOperator = false;
 
 const display = document.querySelector("#display");
 const numberButtons = document.querySelector("#number-buttons");
 const operatorButtons = document.querySelector("#operator-buttons");
 const clearButton = document.querySelector("#clear-button");
 const equalOperator = document.querySelector("#equal-operator");
+const deleteButton = document.querySelector("#delete-button");
 
 numberButtons.addEventListener("click", (event) => {
   if (event.target.tagName === "BUTTON") {
@@ -22,6 +24,7 @@ numberButtons.addEventListener("click", (event) => {
 
 operatorButtons.addEventListener("click", (event) => {
   if (event.target.tagName === "BUTTON") {
+    isOperator = true;
     if (!isNum2) {
       operator = event.target.innerText;
       num1 = currentNum;
@@ -71,6 +74,21 @@ clearButton.addEventListener("click", () => {
   currentNum = "";
   isNum2 = false;
   display.textContent = "";
+});
+
+deleteButton.addEventListener("click", () => {
+  if (isOperator) {
+    operator = "";
+    currentNum = num1;
+    isOperator = false;
+    isNum2 = false;
+  } else {
+    currentNum = currentNum.substring(0, currentNum.length - 1);
+  }
+  display.textContent = display.textContent.substring(
+    0,
+    display.textContent.length - 1,
+  );
 });
 
 function operate(number1, number2, operation) {
