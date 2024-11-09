@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odin Project Calculator</title>
     <script src="script.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/aec3126c68.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="output.css" />
   </head>
   <body class="flex h-screen items-center justify-center">
@@ -14,98 +18,122 @@
       <div
         id="display"
         class="flex aspect-[5/2] w-60 items-end justify-end rounded-lg border-2 border-black bg-gray-400 p-2 text-3xl font-bold"
-      >
-        12+76
-      </div>
-      <div id="buttons" class="flex justify-between">
-        <div class="flex flex-col justify-between">
+      ></div>
+      <div id="buttons" class="grid grid-cols-4 grid-rows-5 gap-2">
+        <div
+          class="col-span-3 row-span-5 grid grid-cols-subgrid grid-rows-subgrid"
+        >
           <button
             id="clear-button"
-            class="flex items-center justify-center rounded-md bg-red-500 px-4 py-1 hover:bg-red-200"
+            class="col-span-1 row-span-1 rounded-md bg-red-500 font-bold hover:bg-red-200"
           >
             AC
           </button>
 
-          <div id="number-buttons" class="flex w-36 flex-wrap gap-2">
+          <button
+            id="delete-button"
+            class="col-span-1 row-span-1 rounded-md bg-red-500 hover:bg-red-200"
+          >
+            <i class="fa-solid fa-delete-left"></i>
+          </button>
+
+          <div
+            id="number-buttons"
+            class="col-span-3 row-span-4 grid grid-cols-subgrid grid-rows-subgrid gap-2"
+          >
             <button
-              class="flex aspect-square items-center justify-center rounded-full bg-gray-300 p-4 hover:bg-gray-500"
+              class="aspect-square rounded-full bg-gray-300 p-4 hover:bg-gray-500"
             >
               1
             </button>
+
             <button
-              class="flex aspect-square items-center justify-center rounded-full bg-gray-300 p-4 hover:bg-gray-500"
+              class="aspect-square rounded-full bg-gray-300 p-4 hover:bg-gray-500"
             >
               2
             </button>
+
             <button
-              class="flex aspect-square items-center justify-center rounded-full bg-gray-300 p-4 hover:bg-gray-500"
+              class="aspect-square rounded-full bg-gray-300 p-4 hover:bg-gray-500"
             >
               3
             </button>
+
             <button
-              class="flex aspect-square items-center justify-center rounded-full bg-gray-300 p-4 hover:bg-gray-500"
+              class="aspect-square rounded-full bg-gray-300 p-4 hover:bg-gray-500"
             >
               4
             </button>
+
             <button
-              class="flex aspect-square items-center justify-center rounded-full bg-gray-300 p-4 hover:bg-gray-500"
+              class="aspect-square rounded-full bg-gray-300 p-4 hover:bg-gray-500"
             >
               5
             </button>
+
             <button
-              class="flex aspect-square items-center justify-center rounded-full bg-gray-300 p-4 hover:bg-gray-500"
+              class="aspect-square rounded-full bg-gray-300 p-4 hover:bg-gray-500"
             >
               6
             </button>
+
             <button
-              class="flex aspect-square items-center justify-center rounded-full bg-gray-300 p-4 hover:bg-gray-500"
+              class="aspect-square rounded-full bg-gray-300 p-4 hover:bg-gray-500"
             >
               7
             </button>
+
             <button
-              class="flex aspect-square items-center justify-center rounded-full bg-gray-300 p-4 hover:bg-gray-500"
+              class="aspect-square rounded-full bg-gray-300 p-4 hover:bg-gray-500"
             >
               8
             </button>
+
             <button
-              class="flex aspect-square items-center justify-center rounded-full bg-gray-300 p-4 hover:bg-gray-500"
+              class="aspect-square rounded-full bg-gray-300 p-4 hover:bg-gray-500"
             >
               9
             </button>
+
             <button
-              class="mx-auto flex aspect-square items-center justify-center rounded-full bg-gray-300 p-4 hover:bg-gray-500"
+              class="col-start-2 aspect-square rounded-full bg-gray-300 p-4 hover:bg-gray-500"
             >
               0
             </button>
           </div>
         </div>
 
-        <div class="flex flex-col gap-2">
-          <div id="operator-buttons" class="flex flex-col gap-2">
+        <div
+          class="col-span-1 row-span-5 grid grid-cols-subgrid grid-rows-subgrid gap-2"
+        >
+          <div
+            id="operator-buttons"
+            class="row-span-4 grid grid-cols-subgrid grid-rows-subgrid gap-2"
+          >
             <button
-              class="flex aspect-square items-center justify-center rounded-full bg-amber-500 p-4 hover:bg-amber-100"
+              class="aspect-square rounded-full bg-amber-500 p-4 hover:bg-amber-100"
             >
               +
             </button>
             <button
-              class="flex aspect-square items-center justify-center rounded-full bg-amber-500 p-4 hover:bg-amber-100"
+              class="aspect-square rounded-full bg-amber-500 p-4 hover:bg-amber-100"
             >
               -
             </button>
             <button
-              class="flex aspect-square items-center justify-center rounded-full bg-amber-500 p-4 hover:bg-amber-100"
+              class="aspect-square rounded-full bg-amber-500 p-4 hover:bg-amber-100"
             >
               ×
             </button>
             <button
-              class="flex aspect-square items-center justify-center rounded-full bg-amber-500 p-4 hover:bg-amber-100"
+              class="aspect-square rounded-full bg-amber-500 p-4 hover:bg-amber-100"
             >
               ÷
             </button>
           </div>
           <button
             id="equal-operator"
-            class="flex aspect-square items-center justify-center rounded-full bg-amber-500 p-4 hover:bg-amber-100"
+            class="rounded-full bg-amber-500 p-4 hover:bg-amber-100"
           >
             =
           </button>
