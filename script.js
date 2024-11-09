@@ -20,6 +20,9 @@ const decimalButton = document.querySelector("#decimal-button");
 
 numberButtons.addEventListener("click", (event) => {
   if (event.target.tagName === "BUTTON") {
+    if (hasEqualRun) {
+      clearEverything();
+    }
     isOperator = false;
     if (!hasDecimal && event.target.innerText === ".") {
       hasDecimal = true;
@@ -93,16 +96,7 @@ equalOperator.addEventListener("click", () => {
 });
 
 clearButton.addEventListener("click", () => {
-  num1 = "";
-  num2 = "";
-  currentNum = "";
-  isNum2 = false;
-  isOperator = false;
-  isZeroDivisor = false;
-  hasDecimal = false;
-  displayCurrent.textContent = "";
-  displayHistory.textContent = "";
-  hasEqualRun = false;
+  clearEverything();
 });
 
 deleteButton.addEventListener("click", () => {
@@ -157,4 +151,17 @@ function multiply(a, b) {
 
 function divide(a, b) {
   return a / b;
+}
+
+function clearEverything() {
+  num1 = "";
+  num2 = "";
+  currentNum = "";
+  isNum2 = false;
+  isOperator = false;
+  isZeroDivisor = false;
+  hasDecimal = false;
+  displayCurrent.textContent = "";
+  displayHistory.textContent = "";
+  hasEqualRun = false;
 }
