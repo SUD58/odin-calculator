@@ -9,7 +9,8 @@ let isOperator = false;
 let hasDecimal = false;
 let hasEqualRun = false;
 
-const display = document.querySelector("#display");
+const displayCurrent = document.querySelector("#display-current");
+const displayHistory = document.querySelector("#display-history");
 const numberButtons = document.querySelector("#number-buttons");
 const operatorButtons = document.querySelector("#operator-buttons");
 const clearButton = document.querySelector("#clear-button");
@@ -30,7 +31,7 @@ numberButtons.addEventListener("click", (event) => {
     }
   }
 
-  display.textContent = currentNum;
+  displayCurrent.textContent += currentNum.slice(-1);
 });
 
 operatorButtons.addEventListener("click", (event) => {
@@ -42,30 +43,28 @@ operatorButtons.addEventListener("click", (event) => {
         num1 = currentNum;
         hasDecimal = false;
         isNum2 = true;
-        display.textContent += operator;
+        displayCurrent.textContent += operator;
       } else {
         num2 = currentNum;
-        console.log(`Num1: ${num1}`);
-        console.log(`Num2: ${num2}`);
 
         result = operate(num1, num2, operator);
         result = Math.round((result + Number.EPSILON) * 100) / 100;
-        console.log(`Result: ${result}`);
 
         if (isZeroDivisor) {
           isZeroDivisor = false;
-          display.textContent = "";
+          displayCurrent.textContent = "";
         } else {
-          display.textContent = result;
+          displayHistory.textContent = displayCurrent.textContent;
+          displayCurrent.textContent = result;
           operator = event.target.innerText;
           num1 = result;
           num2 = currentNum;
-          display.textContent += operator;
+          displayCurrent.textContent += operator;
         }
       }
     } else {
       operator = event.target.innerText;
-      display.textContent += operator;
+      displayCurrent.textContent += operator;
       hasEqualRun = false;
     }
     currentNum = "";
@@ -74,15 +73,15 @@ operatorButtons.addEventListener("click", (event) => {
 
 equalOperator.addEventListener("click", () => {
   if (!isNum2) {
-    display.textContent = "Input operation and second number";
+    displayCurrent.textContent = "Input operation and second number";
   } else {
     num2 = currentNum;
   }
 
   result = operate(num1, num2, operator);
   result = Math.round((result + Number.EPSILON) * 100) / 100;
-
-  display.textContent = result;
+  displayHistory.textContent = displayCurrent.textContent;
+  displayCurrent.textContent = result;
   num1 = result;
   // console.log(`Num1: ${num1}`);
 
@@ -101,7 +100,8 @@ clearButton.addEventListener("click", () => {
   isOperator = false;
   isZeroDivisor = false;
   hasDecimal = false;
-  display.textContent = "";
+  displayCurrent.textContent = "";
+  displayHistory.textContent = "";
   hasEqualRun = false;
 });
 
@@ -114,9 +114,9 @@ deleteButton.addEventListener("click", () => {
   } else {
     currentNum = currentNum.substring(0, currentNum.length - 1);
   }
-  display.textContent = display.textContent.substring(
+  displayCurrent.textContent = displayCurrent.textContent.substring(
     0,
-    display.textContent.length - 1,
+    displayCurrent.textContent.length - 1,
   );
 });
 
